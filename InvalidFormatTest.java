@@ -15,6 +15,18 @@ public class InvalidFormatTest {
     }
 
     @Test
+    public void test_invalid_char_fails() {
+        double result = calc.evaluate("2 + a");
+        assertEquals(Double.NaN, result, 0);
+    }
+
+    @Test
+    public void test_div_mul_fails() {
+        double result = calc.evaluate("2/*2");
+        assertEquals(Double.NaN, result, 0);
+    }    
+
+    @Test
     public void test_triple_neg_fails() {
         double result = calc.evaluate("1---1");
         assertEquals(Double.NaN, result, 0);
@@ -23,6 +35,12 @@ public class InvalidFormatTest {
     @Test
     public void test_neg_plus_fails() {
         double result = calc.evaluate("1-+1");
+        assertEquals(Double.NaN, result, 0);
+    }
+
+    @Test
+    public void test_neg_div_fails() {
+        double result = calc.evaluate("1-/1");
         assertEquals(Double.NaN, result, 0);
     }
 
