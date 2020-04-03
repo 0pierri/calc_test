@@ -164,4 +164,16 @@ public class ExpTest {
         double result = calc.evaluate("4^(3^2)");
         assertEquals(Math.pow(4, Math.pow(3, 2)), result, 0);
     }
+
+    @Test
+    public void test_bigmix() {
+        double result = calc.evaluate("1+((4+3)/(5-2)^3.1)^(2/(3-1))^2");
+        assertEquals(1.2322855266, result, 1e-10);
+    }
+
+    @Test
+    public void test_biggermix() {
+        double result = calc.evaluate("-2-(0-1)+((4+3)/(5-3/4.9^1.2+2)-(3-3)^3.1)^(2/(-1)+(3/2-1))^2");
+        assertEquals(0.159477732, result, 1e-10);
+    }
 }
